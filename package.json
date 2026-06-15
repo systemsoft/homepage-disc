@@ -1,0 +1,40 @@
+{
+  "author": {
+    "name": "netop://ウィビ",
+    "url": "https://webb.page"
+  },
+  "dependencies": {
+    "@inc/uchu": "^3.0.0",
+    "@netopwibby/dedent": "npm:@jsr/netopwibby__dedent"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-node": "^5.5.4",
+    "@sveltejs/kit": "^2.65.1",
+    "@sveltejs/vite-plugin-svelte": "^7.1.2",
+    "chronver": "^2020.6.18",
+    "del-cli": "^7.0.0",
+    "sass-embedded": "^1.100.0",
+    "svelte": "^5.56.3",
+    "svelte-check": "^4.6.0",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.16"
+  },
+  "name": "disc-homepage",
+  "private": true,
+  "scripts": {
+    "build": "bun run clean && vite build",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+    "clean": "del './build'",
+    "dev": "vite dev --port 5507 --host --open",
+    "increment": "chronver --increment package",
+    "prepare": "svelte-kit sync || echo ''",
+    "preview": "vite preview",
+    "start": "bun i && bun run build && PORT=5507 bun ./build/index.js",
+    "test:dependencies": "bun update --latest",
+    "test:svelte": "svelte-check",
+    "test:typescript": "tsc --noEmit"
+  },
+  "type": "module",
+  "version": "2026.06.15"
+}
