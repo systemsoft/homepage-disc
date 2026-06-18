@@ -10,6 +10,7 @@ node_modules
 # File
 .env
 .env.*
+Icon*
 !.env.example
 !.env.test
 deploy.sh
