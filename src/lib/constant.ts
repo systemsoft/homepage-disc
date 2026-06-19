@@ -2,4 +2,4 @@
 /*** EXPORT ------------------------------------------- ***/
 
 export const INSTALL = "curl -fsSL https://disc.sh/install | sh";
-export const VERSION = "2026.06.18";
+export const VERSION = "2026.06.19";

@@ -36,5 +36,5 @@
     "test:typescript": "tsc --noEmit"
   },
   "type": "module",
-  "version": "2026.06.15"
+  "version": "2026.06.19"
 }
