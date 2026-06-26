@@ -72,6 +72,7 @@
       flex-direction: row;
       justify-content: center;
       transition: opacity 0.2s;
+      width: 100%;
 
       @media (min-width: 1201px) {
         height: 302px;
