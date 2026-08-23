@@ -75,7 +75,7 @@
 
   <div class="bottombar">
     <div class="undershirt">
-      <a href="https://github.com/systemsoft/disc/tree/primary/docs">Documentation</a>
+      <a href="https://disc.md">Documentation</a>
       <a href="https://github.com/systemsoft/disc">Code Repository</a>
       <a href="https://www.webb.page/index.php?board=6.0" target="_blank">Forum</a>
       <a href="https://discord.gg/UFNgetsZqB" target="_blank">Discord</a>

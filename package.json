@@ -8,16 +8,16 @@
     "@netopwibby/dedent": "npm:@jsr/netopwibby__dedent"
   },
   "devDependencies": {
-    "@sveltejs/adapter-node": "^5.5.4",
-    "@sveltejs/kit": "^2.65.1",
-    "@sveltejs/vite-plugin-svelte": "^7.1.2",
+    "@sveltejs/adapter-node": "^5.5.7",
+    "@sveltejs/kit": "^2.70.3",
+    "@sveltejs/vite-plugin-svelte": "^7.3.0",
     "chronver": "^2020.6.18",
     "del-cli": "^7.0.0",
-    "sass-embedded": "^1.100.0",
-    "svelte": "^5.56.3",
-    "svelte-check": "^4.6.0",
+    "sass-embedded": "^1.103.1",
+    "svelte": "^5.56.10",
+    "svelte-check": "^4.7.6",
     "typescript": "^6.0.3",
-    "vite": "^8.0.16"
+    "vite": "^8.2.2"
   },
   "name": "disc-homepage",
   "private": true,
