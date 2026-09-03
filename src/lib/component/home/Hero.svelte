@@ -2,14 +2,16 @@
   /*** UTILITY ------------------------------------------ ***/
 
   import { copyTextToClipboard } from "$lib/clipboard";
-  import { INSTALL, VERSION } from "$lib/constant";
+  import { INSTALL, INSTALL_SERVER, VERSION } from "$lib/constant";
 
   /*** STATE -------------------------------------------- ***/
 
   let copied = $state(false);
+  let wantServerInstall = $state(false);
   let visible = $state(false);
   let y = $state(0);
   let scrollAmount = $derived(Math.round(y / 15));
+  // let altText = $state(wantServerInstall ? "Want server install?" : "Want desktop install?");
 </script>
 
 <style lang="scss">
@@ -162,7 +164,7 @@
         display: inherit;
         position: relative;
 
-        @media (max-width: 1000px) {
+        @media (min-width: 401px) and (max-width: 1000px) {
           margin-top: 3rem;
         }
 
@@ -192,6 +194,10 @@
         @media (max-width: 600px) {
           flex-direction: column;
           width: 100%;
+        }
+
+        @media (max-width: 400px) {
+          margin-top: 5rem;
         }
 
         &:not(.copied) {
@@ -225,21 +231,38 @@
         }
 
         label {
+          display: flex;
           position: absolute;
-          top: -3ch;
 
           @media (min-width: 1201px) {
             left: 5ch;
+            width: calc(100% - 5ch);
           }
 
           @media (min-width: 1001px) and (max-width: 1200px) {
             left: 4.6ch;
+            width: calc(100% - 4.6ch);
           }
 
           @media (max-width: 1000px) {
             left: 0;
             text-align: center;
             width: 100%;
+          }
+
+          @media (max-width: 600px) {
+            justify-content: center;
+          }
+
+          @media (min-width: 401px) {
+            flex-direction: row;
+            top: -3ch;
+          }
+
+          @media (max-width: 400px) {
+            align-items: center;
+            flex-direction: column;
+            top: -9ch;
           }
 
           a {
@@ -253,15 +276,23 @@
 
           span {
             font-family: var(--monospace);
+            margin-left: 1ch;
 
             @media (min-width: 601px) {
+              flex: 1;
               opacity: 0.3;
+              text-align: left;
             }
 
             @media (max-width: 600px) {
               background-color: var(--uchu-yin);
+              margin-right: 1ch;
               opacity: 1;
               padding: 2px 5px;
+            }
+
+            @media (max-width: 400px) {
+              transform: translateY(1px);
             }
           }
         }
@@ -300,28 +331,38 @@
         }
 
         button {
-          background-color: var(--uchu-gray-2);
-          border: 1px solid var(--uchu-gray-2);
-          color: var(--uchu-yin-9);
-          font-family: var(--monospace);
-          font-size: 2ch;
-          letter-spacing: 0.05rem;
-          padding: 1ch 2ch;
-          position: relative;
-          text-transform: uppercase;
+          &:not(.plain) {
+            background-color: var(--uchu-gray-2);
+            border: 1px solid var(--uchu-gray-2);
+            color: var(--uchu-yin-9);
+            font-family: var(--monospace);
+            font-size: 2ch;
+            letter-spacing: 0.05rem;
+            padding: 1ch 2ch;
+            position: relative;
+            text-transform: uppercase;
 
-          @media (min-width: 601px) {
-            &:not(:active) {
-              transform: translateX(-1px);
+            @media (min-width: 601px) {
+              &:not(:active) {
+                transform: translateX(-1px);
+              }
+
+              &:active {
+                transform: translateX(-1px) translateY(1px);
+              }
             }
 
-            &:active {
-              transform: translateX(-1px) translateY(1px);
+            @media (max-width: 600px) {
+              font-size: 1.8ch;
             }
           }
 
-          @media (max-width: 600px) {
-            font-size: 1.8ch;
+          &.plain {
+            appearance: none;
+            background: none;
+            border: none;
+            color: inherit;
+            text-decoration: underline;
           }
         }
       }
@@ -360,12 +401,14 @@
       </span>
 
       <fieldset class:copied={copied}>
-        <label for="install_command"><a href="/install.sh">Inspect install script</a> <span>v{VERSION}</span></label>
-        <input id="install_command" readonly type="text" value={INSTALL}/>
+        <label for="install_command">
+          <a href={wantServerInstall ? "/install-server.sh" : "/install.sh"}>Inspect install script</a> <span>v{VERSION}</span> <button class="plain" onclick={() => { wantServerInstall = !wantServerInstall}} type="button">{wantServerInstall ? "Want desktop install?" : "Want server install?"}</button>
+        </label>
+        <input id="install_command" readonly type="text" value={wantServerInstall ? INSTALL_SERVER : INSTALL}/>
         <button
           onclick={() => {
             copied = true;
-            copyTextToClipboard(INSTALL);
+            copyTextToClipboard(wantServerInstall ? INSTALL_SERVER : INSTALL);
             setTimeout(() => { copied = false; }, 1250);
           }}>Copy</button>
       </fieldset>

@@ -88,6 +88,12 @@
         font-size: 0.8rem;
         max-width: 90vw;
       }
+
+      + p {
+        margin: 2rem auto 0;
+        max-width: 700px;
+        text-align: center;
+      }
     }
 
     .point1,
@@ -145,5 +151,7 @@
     <p>Most databases make the schema something you wrestle into place after the fact. <br/><br/>Disc puts it first. You write declarative <abbr title="Schema Definition Language">SDL</abbr> — types, links, properties, constraints — and that single description drives your tables, your migrations, and your generated types. <br/><br/>Define it once. Trust it everywhere.</p>
 
     <pre><span class="file">dbschema/default.disc</span><code><div class="point1">Gel<sup><a href="#footnote-gel">2</a></sup>‑compatible <abbr title="Schema Definition Language">SDL</abbr></div><div class="point2">Links, properties, and constraints</div><div class="point3">Validated before a single table is built</div>{@html DISC_SDL}</code></pre>
+
+    <p>And with <code>disc codegen</code>, you can emit a <em>fully-typed client</em> in <br/>TypeScript, Rust, or Go.</p>
   </div>
 </section>
