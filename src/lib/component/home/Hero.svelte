@@ -11,7 +11,6 @@
   let visible = $state(false);
   let y = $state(0);
   let scrollAmount = $derived(Math.round(y / 15));
-  // let altText = $state(wantServerInstall ? "Want server install?" : "Want desktop install?");
 </script>
 
 <style lang="scss">
